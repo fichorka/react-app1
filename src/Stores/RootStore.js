@@ -1,5 +1,4 @@
 import { observable, action } from 'mobx';
-import {observer} from 'mobx-react'
 import employeeStore from './EmployeeStore';
 import roleStore from './RoleStore';
 import formStore from './FormStore';

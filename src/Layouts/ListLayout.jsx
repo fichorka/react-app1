@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { observer, inject } from 'mobx-react';
 import ListFilter from '../Components/ListFilter';
 import Card from '../Components/Card';
+import UIButton from '../Components/UIButton';
 
 @inject(stores => ({
 	listStore: stores.rootStore.listStore
@@ -9,21 +10,19 @@ import Card from '../Components/Card';
 @observer
 class ListLayout extends Component {
 	render() {
-		console.log(this.props.children)
 		const { listStore, listState, title, isListEmpty } = this.props;
-		const { page, totalItems, itemsPerPage, totalPages, displayedItems } = this.props.listState;
-		const { startIndex, lastIndex } = this.props.listStore;
-		const pageControl = <div className="dib mv1"><span className="dib mh1">Page:</span><button onClick={() => listStore.listState.page--}>Prev</button><span className="dib ph1">{page} / {totalPages}</span><button onClick={() => listStore.listState.page++}>Next</button></div>
-		const quantityControl = <div>Items per page:<select value={listState.itemsPerPage} onChange={e => listState.itemsPerPage = e.target.value}><option value={10}>10</option><option value={15}>15</option><option value={20}>20</option><option value={30}>30</option><option value={50}>50</option></select></div>
+		const { page, totalItems, itemsPerPage, startIndex, lastIndex, totalPages, displayedItems } = this.props.listState;
+		const pageControl = <div className="mv2 f6-l f7 nowrap tc"><button className="pa0 ma0 bn" disabled={page == 1} onClick={() => listStore.listState.page--}><UIButton>Prev</UIButton></button><span className="dib ph1">{page} / {totalPages}</span><button className="pa0 ma0 bn" disabled={page == totalPages} onClick={() => listStore.listState.page++}><UIButton>Next</UIButton></button></div>
+		const quantityControl = <div className="mv1">Items per page: <select className="bn br1" value={listState.itemsPerPage} onChange={e => { listState.itemsPerPage = parseInt(e.target.value, 10); listState.pageCorrect(); }}><option value={5}>5</option><option value={10}>10</option><option value={15}>15</option><option value={20}>20</option><option value={30}>30</option><option value={50}>50</option></select></div>
 		return (
 			<Card componentWidth="w-100" componentTitle={title}>
 				<div className="pa3 mb3" >
 					{!isListEmpty &&
 						<Fragment>
-							<ListFilter />
-							<div>Index range: {startIndex} / {lastIndex}<br />displaying {displayedItems} items out of {totalItems}</div>
-							<div>
-								Items per Page: {quantityControl}
+							<div className="mb3" >
+								<ListFilter />
+								<span className="db mv1">Index range: {startIndex} - {lastIndex}</span><span className="db mv1">displaying {displayedItems} item{displayedItems > 1 ? 's' : ''} out of {totalItems}</span>
+								{quantityControl}
 							</div>
 							{pageControl}
 							{this.props.children}

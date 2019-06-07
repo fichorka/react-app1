@@ -1,10 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { observer, inject } from 'mobx-react';
-import Form from '../Components/Forms/Form';
 import PageLayout from '../Layouts/PageLayout';
-
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
 import ItemsLayout from '../Layouts/ItemsLayout';
 
 @inject(stores => ({
@@ -17,9 +13,7 @@ class Roles extends Component {
 		const { data } = dataStore;
 		return (
 			<PageLayout pageTitle="Roles" >
-				<div className="relative">
 				<ItemsLayout itemName="role" dataLength={data.length} dataStore={dataStore} match={match} />
-				</div>
 			</PageLayout>
 		)
 	}

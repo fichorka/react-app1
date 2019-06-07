@@ -12,7 +12,7 @@ class UIButton extends Component {
 	render() {
 		const {children} = this.props;
 		return (
-			<span className="dib link black br-100 bg-white b--black-50 bg-light-gray ph1 pv1 mh2">{children}</span>
+			<span className="dib pointer br1 bg-white b--black-50 ph3 pv1">{children}</span>
 		);
 	}
 }

@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { observer, inject } from 'mobx-react';
 import { generateList } from '../Common/Common';
 import ListLayout from '../Layouts/ListLayout';
-import { get } from 'mobx';
 
 @inject(stores => ({
 	listStore: stores.rootStore.listStore

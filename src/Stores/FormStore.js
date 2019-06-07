@@ -1,11 +1,8 @@
 import { observable, action, computed } from 'mobx';
 
 class FormStore {
-
-	//format: inputValues[name].[value|getValue]
 	@observable inputValues = {};
 
-	//format: inputState[name]: [isValid, violatedRules]
 	@observable inputState = {};
 
 	@observable dataStore = null;
@@ -19,7 +16,7 @@ class FormStore {
 		editId: null
 	};
 
-	@observable invalidFields = []; f
+	@observable invalidFields = [];
 
 	@action submitForm(e, history, basePath) {
 		e.preventDefault();
@@ -117,7 +114,6 @@ class FormStore {
 	}
 
 	@action testInput(name) {
-		console.log(name)
 		const value = this.inputValues[name].value;
 		const id = this.inputValues.id || null;
 		let rules = this.dataStore.getFieldByName(name).rules || [''];
@@ -140,7 +136,6 @@ class FormStore {
 
 	@action testRule(rule, value, name, skipId) {
 		let arg;
-		// if (/^\s*/.test(value)) return 'no opening space';
 		if (rule == 'optional' && !value.length) {
 			return;
 		}

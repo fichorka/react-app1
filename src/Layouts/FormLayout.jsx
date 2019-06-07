@@ -13,12 +13,13 @@ class FormLayout extends Component {
 					{!editState.isIdInvalid &&
 						<Fragment>
 							<RuleList fields={fields} />
-							{editState.isEditing && <span className="db mh2 mt2" ><span className="">Selected item id:</span> <span className="code">{editState.itemId}</span></span>}
-							{this.props.children}
+							<div className="measure-narrow ma3 pb3">
+								{this.props.children}
+							</div>
 						</Fragment>
 					}
 					{editState.isEditing && editState.isIdInvalid &&
-					<span>Invalid Id <span className="b" >{editState.itemId}</span></span>
+						<span>Invalid Id <span className="b" >{editState.itemId}</span></span>
 					}
 				</Card>
 			</Fragment>

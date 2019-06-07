@@ -24,7 +24,6 @@ class DataHandling {
 	}
 
 	isValueUnique(value, name, skipId) {
-		console.log(skipId)
 		for (let i=0; i < this.data.length; i++) {
 			if (this.data[i][name].value.toLowerCase() == value.toLowerCase() && this.data[i].id != skipId) {
 				return true
@@ -68,6 +67,3 @@ class DataHandling {
 }
 
 export default DataHandling;
-
-// const dataHandling = new DataHandling();
-// export default dataHandling;

@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { observer, inject } from 'mobx-react';
-import PageTitle from '../Components/PageTitle';
 import SideBar from '../Components/SideBar';
 import List from '../Components/List';
 import Form from '../Components/Forms/Form';
@@ -15,7 +14,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 class ItemsLayout extends Component {
 	constructor(props) {
 		super(props);
-		props.sideBarStore.initializeStore([{ name: 'form', label: 'Add new role' }, { name: 'list', label: 'Show list' }]);
+		props.sideBarStore.initializeStore([{ name: 'form', label: `Add new ${props.itemName}` }, { name: 'list', label: 'Show list' }]);
 	}
 
 	render() {
@@ -32,7 +31,7 @@ class ItemsLayout extends Component {
 							<SideBar />
 							<div className="dib w-80-l w-100">
 								{form &&
-									<Form dataStore={dataStore} title={`NEW ${itemName.toUpperCase()}`} />
+									<Form dataStore={dataStore} title={`NEW ${itemName.toUpperCase()}`} basePath={match.path} />
 								}
 								{list &&
 									<List dataStore={dataStore} match={this.props.match} title={`LIST OF ${itemName.toUpperCase()}S`} />

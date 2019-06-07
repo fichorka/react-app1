@@ -14,7 +14,7 @@ class HeaderStore {
 		},
 		paths: {
 			link1: '/',
-			link2: '/Employees',
+			link2: '/employees',
 			link3: '/roles',
 			link4: '/role-list',
 			link5: '/employee-list'

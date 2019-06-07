@@ -13,7 +13,7 @@ class NoMatch extends Component {
 		return (
 			<PageLayout pageTitle="No Match">
 				<div className="ph4-l ph3">
-					<span className="db pv2 tc">{this.props.location.pathname}</span>
+					<span className="db pv2 tc">dfsgdgs</span>
 				</div>
 			</PageLayout>
 		)
